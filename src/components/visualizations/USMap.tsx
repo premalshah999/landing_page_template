@@ -4,7 +4,11 @@ import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
-export function USAMapBackground() {
+interface USAMapBackgroundProps {
+    strokeColor?: string;
+}
+
+export function USAMapBackground({ strokeColor = "#EF4444" }: USAMapBackgroundProps) {
     return (
         <div className="w-full h-full flex items-center justify-center">
             <ComposableMap projection="geoAlbersUsa">
@@ -15,7 +19,7 @@ export function USAMapBackground() {
                                 key={geo.rsmKey}
                                 geography={geo}
                                 fill="transparent"
-                                stroke="#3B82F6" // blue-500
+                                stroke={strokeColor}
                                 strokeWidth={2}
                                 style={{
                                     default: { outline: "none" },

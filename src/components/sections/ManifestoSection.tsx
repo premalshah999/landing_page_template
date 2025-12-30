@@ -1,11 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { TextRevealOptimized } from "@/components/ui/text-reveal-optimized";
+import { InteractiveUSMap } from "@/components/visualizations/InteractiveUSMap";
 import { siteConfig } from "@/config/content";
+import { ArrowRight } from "lucide-react";
 
 export function ManifestoSection() {
-    const fullText = siteConfig.manifesto.paragraphs.join(" ");
+    // Show only the first paragraph on the homepage
+    const truncatedText = siteConfig.manifesto.paragraphs[0];
 
     return (
         <section id="manifesto" className="relative py-16 md:py-24">
@@ -29,13 +33,35 @@ export function ManifestoSection() {
                 </div>
             </div>
 
-            {/* Text Reveal */}
+            {/* Truncated Text */}
             <div className="px-4 md:px-6 lg:px-12 py-12 md:py-16">
                 <div className="max-w-6xl mx-auto">
                     <TextRevealOptimized
-                        text={fullText}
+                        text={truncatedText}
                         className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light leading-relaxed text-foreground/90 font-[family-name:var(--font-space-grotesk)]"
                     />
+                </div>
+            </div>
+
+            {/* Read More Link */}
+            <div className="flex justify-center px-4 md:px-6 lg:px-12 pb-8">
+                <ScrollReveal delay={0.2}>
+                    <Link
+                        href="/manifesto"
+                        className="group inline-flex items-center gap-2 text-base md:text-lg text-muted-foreground hover:text-foreground transition-colors font-[family-name:var(--font-space-grotesk)]"
+                    >
+                        Read more
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                </ScrollReveal>
+            </div>
+
+            {/* Interactive USA Map */}
+            <div className="px-4 md:px-6 lg:px-12 py-12 md:py-16">
+                <div className="w-full">
+                    <ScrollReveal delay={0.2}>
+                        <InteractiveUSMap />
+                    </ScrollReveal>
                 </div>
             </div>
 
@@ -48,3 +74,4 @@ export function ManifestoSection() {
         </section>
     );
 }
+

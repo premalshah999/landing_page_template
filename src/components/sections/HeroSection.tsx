@@ -12,7 +12,7 @@ export function HeroSection() {
             {/* Map Background */}
             <div className="absolute inset-0 flex items-center justify-center opacity-10 z-0">
                 <div className="w-full max-w-[1200px] h-full">
-                    <USAMapBackground />
+                    <USAMapBackground strokeColor="#3B82F6" />
                 </div>
             </div>
 
